@@ -1,49 +1,38 @@
-#include "main.h"
+#include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
-* argstostr - concatenates all the arguments of your program.
-* @ac: arguments count
-* @av: arguments vector
-*
-* Return: a pointer to a new string, or NULL if it fails
-*/
-char *argstostr(int ac, char **av)
+ * print_tab - Prints an array of string
+ * @tab: The array to print
+ *
+ * Return: nothing
+ */
+void print_tab(char **tab)
 {
-char *str, *s;
-int i, j, k, len = 0;
+    int i;
 
-if (ac == 0 || av == NULL)
-return (NULL);
-
-for (i = 0; i < ac; i++)
-{
-s = av[i];
-j = 0;
-
-while (s[j++])
-len++;
-len++;
-}
-
-str = (char *)malloc(sizeof(char) * (len + 1));
-if (str == NULL)
-return (NULL);
-
-for (i = 0, j = 0; i < ac && j < len; i++)
-{
-s = av[i];
-k = 0;
-
-while (s[k])
+    for (i = 0; tab[i] != NULL; ++i)
     {
-        str[j] = s[k];
-        k++;
-        j++;
+        printf("%s\n", tab[i]);
     }
-str[j++] = '\n';
 }
-str[j] = '\0';
 
-return (str);
+/**
+ * main - check the code for ALX School students.
+ *
+ * Return: 1 if an error occurred, 0 otherwise
+ */
+int main(void)
+{
+    char **tab;
+
+    tab = strtow("      ALX School         #cisfun      ");
+    if (tab == NULL)
+    {
+        printf("Failed\n");
+        return (1);
+    }
+    print_tab(tab);
+    return (0);
 }
