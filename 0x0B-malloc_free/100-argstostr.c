@@ -1,38 +1,41 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 /**
- * print_tab - Prints an array of string
- * @tab: The array to print
- *
- * Return: nothing
+ * argstostr - main entry
+ * @ac: int input
+ * @av: double pointer array
+ * Return: 0
  */
-void print_tab(char **tab)
+char *argstostr(int ac, char **av)
 {
-    int i;
+	int i, n, r = 0, l = 0;
+	char *str;
 
-    for (i = 0; tab[i] != NULL; ++i)
-    {
-        printf("%s\n", tab[i]);
-    }
-}
+	if (ac == 0 || av == NULL)
+		return (NULL);
 
-/**
- * main - check the code for ALX School students.
- *
- * Return: 1 if an error occurred, 0 otherwise
- */
-int main(void)
-{
-    char **tab;
+	for (i = 0; i < ac; i++)
+	{
+		for (n = 0; av[i][n]; n++)
+			l++;
+	}
+	l += ac;
 
-    tab = strtow("      ALX School         #cisfun      ");
-    if (tab == NULL)
-    {
-        printf("Failed\n");
-        return (1);
-    }
-    print_tab(tab);
-    return (0);
+	str = malloc(sizeof(char) * l + 1);
+	if (str == NULL)
+		return (NULL);
+	for (i = 0; i < ac; i++)
+	{
+	for (n = 0; av[i][n]; n++)
+	{
+		str[r] = av[i][n];
+		r++;
+	}
+	if (str[r] == '\0')
+	{
+		str[r++] = '\n';
+	}
+	}
+	return (str);
 }
