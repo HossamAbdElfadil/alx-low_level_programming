@@ -3,11 +3,11 @@
 
 
 /**
-* print_dog - prints a struct dog
-* @d: pointer to structure
-*
-* Return: void
-*/
+ * print_dog - prints a struct dog
+ * @d: pointer to structure
+ *
+ * Return: void
+ */
 void print_dog(struct dog *d)
 {
     if (d != NULL)
